@@ -204,11 +204,21 @@ def upload_2_DZDP(url,district):
         #conn.rollback()
     conn.close()
 
+"""
+获取每一页的的商铺url
+parameters:
+    district_url
+returns:
+    shop  商铺url
+"""
 def get_shop_url(district_url):
     data = get_data(district_url)
     shop = set(re.findall(r'http:.*/shop/\d*',str(data)))
     return shop
 
+"""
+获取商圈名和url
+"""
 def get_file(file_path):
     file = open(file_path)
     district = []
@@ -229,7 +239,7 @@ for i in range(len(district)):
         shops = get_shop_url(district_url[i]+"p"+str(j))
         for shop in shops:
             try:
-                time.sleep(5)
+                time.sleep(5) #暂停5秒
                 upload_2_DZDP(shop,district_name)
             except:
                 print(shop,"failed")
