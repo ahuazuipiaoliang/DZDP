@@ -1,10 +1,10 @@
 # DZDP
 爬取大众点评网的美食商户数据
-#python3
-
+代码使用python3编写
 我尝试的是爬取成都重要商圈的信息，也可以自己修改想爬取的城市
 
-#创建数据库
+# 创建数据库
+
 键可参考以下设置
 `name`, `address`, `phone`, `comments`, `price`, `taste`, `condition`, `service`,`category`,`district`
 
