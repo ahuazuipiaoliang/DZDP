@@ -11,17 +11,7 @@
 
 # 设置代码的暂停时间
 大众点评如果发现短时间内大量的请求，很大可能会将你的IP封锁
-
-for i in range(len(district)):
-    for j in range(1,51):
-        district_name = district[i]
-        shops = get_shop_url(district_url[i]+"p"+str(j))
-        for shop in shops:
-            try:
-                time.sleep(5) #暂停5秒
-                upload_2_DZDP(shop,district_name)
-            except:
-                print(shop,"failed")
+在上传数据`upload_2_DZDP(shop,district_name)`之前加入`time.sleep(5) #暂停5秒`
 
 
 # district.txt
