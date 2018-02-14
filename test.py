@@ -5,7 +5,13 @@ import pymysql
 import random
 import time
 
-
+"""
+获取网页源代码
+parameters: 
+url 
+returns: 
+data 网页源代码
+"""
 def get_data(url_1):
 
     proxy_list = ['121.8.98.197:80',
@@ -40,7 +46,13 @@ def get_data(url_1):
 
 
 
-
+"""
+获取商户地址
+parameters:
+data
+returns:
+a 商户地址
+"""
 def get_address(data):
     try:
         for address in set(re.findall(r'(?<=address" title=").*?(?=">)', str(data))):
@@ -48,7 +60,14 @@ def get_address(data):
         return a
     except:
         return -1
-
+    
+"""
+获取商户联系电话
+parameters:
+    data 源代码
+returns:
+    p 商户联系电话
+"""
 def get_phone(data):
     try:
         for phone in set(re.findall(r'(?<="tel">).*(?=</span> </p> <div class="promosearch-wrapper")',str(data))):
@@ -57,6 +76,13 @@ def get_phone(data):
     except:
         return -1
 
+"""
+获取人居消费
+parameters:
+    data 源代码
+returns:
+    pr 人均消费
+"""
 def get_price(data):
     try:
         for price in set(re.findall(r'(?<=item">人均:)\d*?(?=元)',str(data))):
@@ -64,7 +90,13 @@ def get_price(data):
         return pr
     except:
         return -1
-
+"""
+获取评论数
+parameters:
+    data
+returns:
+    comment
+"""
 def get_comments(data):
     try:
         for comment in set(re.findall(r'(?<=>)\d*(?=条评论)',str(data))):
@@ -72,7 +104,13 @@ def get_comments(data):
         return comment
     except:
         return -1
-
+"""
+获取口味评分
+parameters:
+    data
+returns:
+    taste
+"""
 def get_taste(data):
     try:
         for taste in set(re.findall(r'(?<=口味:)\d\.\d',str(data))):
@@ -80,7 +118,13 @@ def get_taste(data):
         return taste
     except:
         return -1
-
+"""
+获取环境评分
+parameters:
+    data
+returns:
+    condition
+"""
 def get_condition(data):
     try:
         for condition in set(re.findall(r'(?<=环境:)\d\.\d',str(data))):
@@ -88,7 +132,13 @@ def get_condition(data):
         return condition
     except:
         return -1
-
+"""
+获取服务评分
+parameters:
+    data
+returns:
+    service
+"""
 def get_service(data):
     try:
         for service in set(re.findall(r'(?<=服务:)\d\.\d',str(data))):
@@ -96,7 +146,13 @@ def get_service(data):
         return service
     except:
         return -1
-
+"""
+获取获取商户种类
+parameters:
+    data
+returns:
+    category
+"""
 def get_category(data):
     try:
         for category in set(re.findall(r'(?<=<a href="//www.dianping.com/chengdu/ch\d\d/g\d\d\d" itemprop="url"> ).*?(?=\s)',str(data))):
@@ -104,7 +160,13 @@ def get_category(data):
         return category
     except:
         return -1
-
+"""
+获取商户名称
+parameters:
+    data
+return:
+    name
+"""
 def get_name(data):
     try:
         for name in set(re.findall(r'(?<=shop-name"> ).*?(?=\s)',str(data))):
@@ -112,7 +174,13 @@ def get_name(data):
         return name
     except:
         return -1
-
+"""
+上传数据到mysql数据库方便管理数据
+parameters:
+    url
+    district  商圈的信息
+return:
+"""
 def upload_2_DZDP(url,district):
     data = get_data(url)
     name = get_name(data)
@@ -124,7 +192,7 @@ def upload_2_DZDP(url,district):
     condition = get_condition(data)
     service = get_service(data)
     category = get_category(data)
-    conn = pymysql.connect(host="5997cf86e6880.gz.cdb.myqcloud.com",port=5682,user="root",passwd="j876730851",db="DZDP",charset="UTF8")
+    conn = pymysql.connect(host="",port=,user="",passwd="",db="",charset="UTF8")
     conn.autocommit(False)
     cursor = conn.cursor()
     sql = "INSERT INTO `DZDP`.`restaurant` (`name`, `address`, `phone`, `comments`, `price`, `taste`, `condition`, `service`,`category`,`district`) VALUES ('"+str(name)+"', '"+str(address)+"', '"+str(phone)+"', '"+str(comments)+"', '"+str(price)+"', '"+str(taste)+"', '"+str(condition)+"', '"+str(service)+"', '"+str(category)+"', '"+str(district)+"')"
@@ -151,7 +219,7 @@ def get_file(file_path):
         district_url.append(i[1])
     return district,district_url
 
-path = "/Users/jinbeng/python3_study/district.txt"
+path = "district.txt"
 
 district, district_url = get_file(path)
 
