@@ -100,7 +100,7 @@ def upload_2_DZDP(url,district):
     condition = get_condition(data)
     service = get_service(data)
     category = get_category(data)
-    conn = pymysql.connect(host="5997cf86e6880.gz.cdb.myqcloud.com",port=5682,user="root",passwd="j876730851",db="DZDP",charset="UTF8")
+    conn = pymysql.connect(host="",port=,user="",passwd="",db="",charset="UTF8")
     conn.autocommit(False)
     cursor = conn.cursor()
     sql = "INSERT INTO `DZDP`.`restaurant` (`name`, `address`, `phone`, `comments`, `price`, `taste`, `condition`, `service`,`category`,`district`) VALUES ('"+str(name)+"', '"+str(address)+"', '"+str(phone)+"', '"+str(comments)+"', '"+str(price)+"', '"+str(taste)+"', '"+str(condition)+"', '"+str(service)+"', '"+str(category)+"', '"+str(district)+"')"
