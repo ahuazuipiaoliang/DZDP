@@ -11,7 +11,7 @@
 大众点评中成都主要商圈的信息如下
 
 # district.txt
-高新区 http://www.dianping.com/chengdu/ch10/r7949
+高新区 http://www.dianping.com/chengdu/ch10/r7949 /n
 春熙路 http://www.dianping.com/chengdu/ch10/r1577
 宽窄巷子 http://www.dianping.com/chengdu/ch10/r7767
 科华北路 http://www.dianping.com/chengdu/ch10/r1592
