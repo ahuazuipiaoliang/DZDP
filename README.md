@@ -3,6 +3,7 @@
 #python3
 
 我尝试的是爬取成都重要商圈的信息，也可以自己修改想爬取的城市
+
 #创建数据库
 键可参考以下设置
 `name`, `address`, `phone`, `comments`, `price`, `taste`, `condition`, `service`,`category`,`district`
